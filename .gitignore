@@ -1,2 +1,3 @@
 /timeService/node_modules
 /timeService/package-lock.json
+*.env

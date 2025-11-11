@@ -14,3 +14,17 @@ services:
         expose:
             - "3000"
         restart: unless-stopped
+
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        ports:
+            - "27017:27017"
+        env_file:
+            - ./mongodb.env
+        volumes:
+            - mongo_data:/data/db
+        restart: unless-stopped
+
+volumes:
+    mongo_data:
