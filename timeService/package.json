@@ -1,0 +1,15 @@
+{
+  "name": "timeservice",
+  "version": "1.0.0",
+  "description": "A service to get the current time. Mainly used as an example",
+  "license": "ISC",
+  "author": "Benjamin Godfrey",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Trust me bro.'"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
