@@ -1,2 +1,4 @@
 #!/bin/bash
-docker compose up -d --build --no-cache
+docker compose build --no-cache
+docker compose up -d
+docker exec -it ollama ollama pull mistral:latest

@@ -26,5 +26,34 @@ services:
             - mongo_data:/data/db
         restart: unless-stopped
 
+    ollama:
+        image: ollama/ollama:latest
+        container_name: ollama
+        restart: unless-stopped
+        ports:
+            - "11434:11434"
+        environment:
+            - OLLAMA_HOST=0.0.0.0:11434
+            - OLLAMA_MODEL=tinyllama:1.1b
+        volumes:
+            - ollama_data:/root/.ollama
+        
+    
+    open-webui:
+        image: ghcr.io/open-webui/open-webui:main
+        container_name: open-webui
+        depends_on:
+        - ollama
+        ports:
+        - "3000:8080"
+        volumes:
+        - openwebui_data:/app/backend/data
+        environment:
+        - OLLAMA_BASE_URL=http://ollama:11434
+        - WEBUI_AUTH=False
+        restart: unless-stopped
+
 volumes:
     mongo_data:
+    openwebui_data:
+    ollama_data:
